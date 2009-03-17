@@ -1,0 +1,25 @@
+{
+  "name": "@game-gpt/von-homepage",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vmz dev . --out-dir dist/cdn --target browser",
+    "prebuild": "pnpm --filter @game-gpt/von run build",
+    "build": "vmz check . && vmz build . --release --profile static --out-dir dist/cdn --target browser",
+    "build:cdn": "pnpm run build",
+    "check": "vmz check .",
+    "serve": "vmz serve . --out-dir dist/cdn --profile static",
+    "typecheck": "vmz check ."
+  },
+  "dependencies": {
+    "@game-gpt/von": "workspace:*",
+    "@vmz/core": "0.1.9",
+    "@vmz/ui": "0.1.9",
+    "@vmz/ui-icons": "0.1.9",
+    "yaml": "^2.9.0"
+  },
+  "devDependencies": {
+    "@vmz/vmz": "0.1.9"
+  }
+}

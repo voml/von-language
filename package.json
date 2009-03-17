@@ -1,0 +1,26 @@
+{
+    "name": "@game-gpt/von-workspace",
+    "private": true,
+    "description": "Virtual Object Notation (VON) language workspace",
+    "packageManager": "pnpm@10.0.0",
+    "type": "module",
+    "scripts": {
+        "fmt": "node scripts/format.mjs",
+        "fmt:check": "node scripts/format.mjs --check",
+        "dev": "pnpm --filter @game-gpt/von-homepage dev",
+        "homepage": "pnpm --filter @game-gpt/von-homepage build:cdn",
+        "build": "pnpm -r --filter @game-gpt/von --filter @game-gpt/von-schema run build",
+        "test": "pnpm build && pnpm -r --filter @game-gpt/von --filter @game-gpt/von-schema run test",
+        "typecheck": "pnpm -r --filter @game-gpt/von --filter @game-gpt/von-schema --filter @game-gpt/von-homepage run typecheck",
+        "test:rs": "cargo test --manifest-path projects/von.rs/Cargo.toml --workspace --all-features",
+        "check:rs": "cargo check --manifest-path projects/von.rs/Cargo.toml --workspace --all-features"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.4.8"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "esbuild"
+        ]
+    }
+}

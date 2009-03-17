@@ -1,0 +1,10 @@
+[package]
+name = "von-parser"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Hand-written lexer and recursive-descent parser for VON"
+
+[dependencies]
+miette.workspace = true
+von-ast = { path = "../von-ast" }

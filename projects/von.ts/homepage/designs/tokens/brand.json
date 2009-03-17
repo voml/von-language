@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "primary": "#1F7A4D",
+    "energy": "#B85A2A"
+  },
+  "scale": {
+    "50": "#E7F5ED",
+    "100": "#C5E8D4",
+    "200": "#9DD9B8",
+    "300": "#6FC997",
+    "400": "#47B87A",
+    "500": "#1F7A4D",
+    "600": "#0F4F34",
+    "700": "#0A3D28",
+    "800": "#062A1C",
+    "900": "#031810",
+    "950": "#010C08"
+  },
+  "surface": {
+    "paper": "#FFFFFF",
+    "mist": "#F7FAF6",
+    "page": "#F3F6F1",
+    "ink": "#14201C",
+    "graphite": "#3D4F47"
+  },
+  "text": {
+    "ink": "#14201C",
+    "steel": "#3D4F47",
+    "on-brand": "#F4FBF6",
+    "on-ink": "#F7FAF6"
+  },
+  "line": {
+    "default": "rgba(20, 32, 28, 0.16)",
+    "subtle": "rgba(20, 32, 28, 0.08)",
+    "strong": "#14201C"
+  },
+  "status": {
+    "success": "#1F7A4D",
+    "warning": "#B85A2A",
+    "error": "#B85A2A",
+    "analysis": "#0F4F34",
+    "runtime": "#3D4F47"
+  },
+  "font": {
+    "sans": "\"Sora\", \"Avenir Next\", \"Segoe UI\", sans-serif",
+    "mono": "\"IBM Plex Mono\", \"Cascadia Mono\", Consolas, monospace",
+    "display": "\"Fraunces\", \"Iowan Old Style\", Georgia, serif"
+  }
+}

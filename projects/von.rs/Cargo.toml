@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = ["von", "von-ast", "von-parser"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MPL-2.0"
+
+[workspace.dependencies]
+miette = "7.6.0"
+serde = { version = "1.0.228", features = ["derive"] }

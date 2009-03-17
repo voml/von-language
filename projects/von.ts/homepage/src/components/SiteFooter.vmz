@@ -1,0 +1,105 @@
+<template>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <p class="site-footer__brand">{brandShortLabel}</p>
+        <p class="site-footer__full">{brandFullLabel}</p>
+        <p class="site-footer__blurb">{footerBlurbLabel}</p>
+      </div>
+
+      <div class="site-footer__cols">
+        <div>
+          <h2>{footerExploreLabel}</h2>
+          <ul>
+            <li><Link href="/">{navHomeLabel}</Link></li>
+            <li><Link href="/playground">{navPlaygroundLabel}</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h2>{footerPackagesLabel}</h2>
+          <ul>
+            <li><code>@game-gpt/von</code></li>
+            <li><code>@game-gpt/von-schema</code></li>
+          </ul>
+        </div>
+        <div>
+          <h2>{footerConvertLabel}</h2>
+          <ul>
+            <li>{footerJsonVonLabel}</li>
+            <li>{footerYamlVonLabel}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer__bar">
+      <p>© {yearLabel} {footerCopyrightLabel}</p>
+      <p class="site-footer__mono">{footerMonoLabel}</p>
+    </div>
+  </footer>
+</template>
+
+<script client>
+import {
+  brandShort,
+  brandFull,
+  navHome,
+  navPlayground,
+  footerBlurb,
+  footerExplore,
+  footerPackages,
+  footerConvert,
+  footerJsonVon,
+  footerYamlVon,
+  footerCopyright,
+  footerMono,
+} from "#locales/common";
+import { readLocaleId, withLocaleHint, watchDocumentLocale } from "../lib/locale-copy.ts";
+
+export default class SiteFooter {
+  localeId = "en-us";
+  brandShortLabel = "";
+  brandFullLabel = "";
+  navHomeLabel = "";
+  navPlaygroundLabel = "";
+  footerBlurbLabel = "";
+  footerExploreLabel = "";
+  footerPackagesLabel = "";
+  footerConvertLabel = "";
+  footerJsonVonLabel = "";
+  footerYamlVonLabel = "";
+  footerCopyrightLabel = "";
+  footerMonoLabel = "";
+  yearLabel = String(new Date().getFullYear());
+  _unwatchLocale = null;
+
+  onMount() {
+    this.applyLocaleCopy();
+    this._unwatchLocale = watchDocumentLocale((id) => this.applyLocaleCopy(id));
+  }
+
+  onDestroy() {
+    if (typeof this._unwatchLocale === "function") this._unwatchLocale();
+    this._unwatchLocale = null;
+  }
+
+  refreshCopy() {
+    this.brandShortLabel = brandShort();
+    this.brandFullLabel = brandFull();
+    this.navHomeLabel = navHome();
+    this.navPlaygroundLabel = navPlayground();
+    this.footerBlurbLabel = footerBlurb();
+    this.footerExploreLabel = footerExplore();
+    this.footerPackagesLabel = footerPackages();
+    this.footerConvertLabel = footerConvert();
+    this.footerJsonVonLabel = footerJsonVon();
+    this.footerYamlVonLabel = footerYamlVon();
+    this.footerCopyrightLabel = footerCopyright();
+    this.footerMonoLabel = footerMono();
+  }
+
+  applyLocaleCopy(preferred) {
+    this.localeId = readLocaleId(preferred);
+    withLocaleHint(this.localeId, () => this.refreshCopy());
+  }
+}
+</script>

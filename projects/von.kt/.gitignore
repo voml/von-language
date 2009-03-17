@@ -1,0 +1,13 @@
+# Gradle and Kotlin compiler outputs
+.gradle/
+build/
+out/
+*.class
+
+# IntelliJ project state
+.idea/
+*.iml
+
+# Operating-system state
+.DS_Store
+Thumbs.db

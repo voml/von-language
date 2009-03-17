@@ -1,0 +1,84 @@
+<template>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-brand" href="/" aria-label={homeAriaLabel}>
+        <Icon name="nav.home" size="sm" label="" />
+        <span class="site-brand__mark">{brandShortLabel}</span>
+        <span class="site-brand__tag">{brandFullLabel}</span>
+      </a>
+
+      <nav class="site-nav" aria-label={navPrimaryLabel}>
+        <a href="/" aria-current={homeCurrent}>{navHomeLabel}</a>
+        <a href="/playground" aria-current={playgroundCurrent}>{navPlaygroundLabel}</a>
+      </nav>
+
+      <div class="site-header__aside">
+        <LocaleSwitch />
+        <code class="site-header__pkg">@game-gpt/von</code>
+        <Button type="button" onClick={() => this.goPlayground()}>{navConvertLabel}</Button>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script client>
+import {
+  brandShort,
+  brandFull,
+  navHome,
+  navPlayground,
+  navConvert,
+  navPrimary,
+} from "#locales/common";
+import { isActivePath, readLocaleId, withLocaleHint, watchDocumentLocale } from "../lib/locale-copy.ts";
+
+export default class SiteHeader {
+  localeId = "en-us";
+  brandShortLabel = "";
+  brandFullLabel = "";
+  navHomeLabel = "";
+  navPlaygroundLabel = "";
+  navConvertLabel = "";
+  navPrimaryLabel = "";
+  homeAriaLabel = "";
+  homeCurrent = null;
+  playgroundCurrent = null;
+  _unwatchLocale = null;
+
+  onMount() {
+    this.applyLocaleCopy();
+    this._unwatchLocale = watchDocumentLocale((id) => this.applyLocaleCopy(id));
+    this.syncNavState();
+  }
+
+  onDestroy() {
+    if (typeof this._unwatchLocale === "function") this._unwatchLocale();
+    this._unwatchLocale = null;
+  }
+
+  syncNavState() {
+    this.homeCurrent = isActivePath("/") ? "page" : null;
+    this.playgroundCurrent = isActivePath("/playground") ? "page" : null;
+  }
+
+  refreshCopy() {
+    this.brandShortLabel = brandShort();
+    this.brandFullLabel = brandFull();
+    this.navHomeLabel = navHome();
+    this.navPlaygroundLabel = navPlayground();
+    this.navConvertLabel = navConvert();
+    this.navPrimaryLabel = navPrimary();
+    this.homeAriaLabel = `${this.brandShortLabel} home`;
+    this.syncNavState();
+  }
+
+  applyLocaleCopy(preferred) {
+    this.localeId = readLocaleId(preferred);
+    withLocaleHint(this.localeId, () => this.refreshCopy());
+  }
+
+  goPlayground() {
+    if (typeof window !== "undefined") window.location.href = "/playground";
+  }
+}
+</script>

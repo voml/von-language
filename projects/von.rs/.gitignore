@@ -1,0 +1,12 @@
+# Cargo workspace outputs
+/target/
+
+# Library workspaces do not commit a resolver lockfile.
+/Cargo.lock
+
+# Editor and operating-system state
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

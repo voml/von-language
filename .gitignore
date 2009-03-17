@@ -1,0 +1,20 @@
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Rust
+target/
+.cargo/config.toml
+
+# OS / temp
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo

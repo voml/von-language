@@ -1,0 +1,64 @@
+<template>
+  <div class="locale-switch">
+    <Select
+      label={localeLabel}
+      value={localeId}
+      options={localeOptions}
+      controlId="von-locale-select"
+      onChange={onLocaleChange}
+    />
+  </div>
+</template>
+
+<style>
+.locale-switch {
+  min-width: 7.5rem;
+}
+</style>
+
+<script client>
+import { localeLabel, localeEn, localeZh } from "#locales/common";
+import { readLocaleId, withLocaleHint } from "../lib/locale-copy.ts";
+
+export default class LocaleSwitch {
+  localeId = "en-us";
+  localeLabel = "";
+  localeOptions = [
+    { value: "en-us", label: "English" },
+    { value: "zh-hans", label: "中文" },
+  ];
+  _unwatchLocale = null;
+
+  onMount() {
+    this.applyLocaleCopy();
+  }
+
+  refreshCopy() {
+    withLocaleHint(this.localeId, () => {
+      this.localeLabel = localeLabel();
+      this.localeOptions = [
+        { value: "en-us", label: localeEn() },
+        { value: "zh-hans", label: localeZh() },
+      ];
+    });
+  }
+
+  applyLocaleCopy(preferred) {
+    this.localeId = readLocaleId(preferred);
+    this.refreshCopy();
+  }
+
+  async onLocaleChange(e) {
+    const next = e?.target?.value;
+    if (!next || next === this.localeId) return;
+    if (typeof window === "undefined") return;
+    const fn = window.__vmzTransitionLocale;
+    if (typeof fn !== "function") return;
+    const r = await fn(next);
+    if (r && r.status === "committed") {
+      this.applyLocaleCopy(next);
+      queueMicrotask(() => this.applyLocaleCopy(next));
+    }
+  }
+}
+</script>

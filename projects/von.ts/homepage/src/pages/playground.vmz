@@ -1,0 +1,208 @@
+<template>
+  <div class="playground">
+    <header class="playground__head">
+      <div>
+        <p class="playground__eyebrow">{playgroundEyebrowLabel}</p>
+        <h1>{playgroundTitleLabel}</h1>
+        <p class="playground__lede">{playgroundLedeLabel}</p>
+      </div>
+      <Button type="button" variant="secondary" onClick={() => this.resetSample()}>
+        {playgroundResetLabel}
+      </Button>
+    </header>
+
+    <Tabs
+      label={playgroundTabsLabel}
+      selected={tab}
+      panelId="von-playground-panel"
+      items={tabItems}
+      onSelect={(id) => this.onTabSelect(id)}
+    >
+      <div class="playground__toolbar">
+        <Select
+          label={formatLabel}
+          value={format}
+          options={formatOptions}
+          controlId="von-format-select"
+          onChange={(e) => this.onFormatChange(e)}
+        />
+        <p class="playground__hint">{playgroundHintLabel}</p>
+      </div>
+
+      <div class="playground__grid">
+        <div>
+          <span class="playground__panel-label">{inputLabel}</span>
+          <TextArea
+            rows={18}
+            value={input}
+            onInput={(e) => this.onInput(e)}
+          />
+        </div>
+
+        <div>
+          <div class="playground__output-head">
+            <span class="playground__panel-label">{outputLabel}</span>
+            <strong if={conversionOk} class="playground__status-ok">{playgroundConvertedLabel}</strong>
+            <strong if={!conversionOk} class="playground__status-bad">{playgroundFailedLabel}</strong>
+          </div>
+          <Alert if={!conversionOk} tone="danger" title={playgroundFailedLabel} description={conversionError} />
+          <CodeBlock if={conversionOk} code={outputText} caption={outputLabel} copyLabel="Copy" />
+        </div>
+      </div>
+    </Tabs>
+  </div>
+</template>
+
+<script client>
+import { parse, VonParseError } from "@game-gpt/von";
+import {
+  playgroundEyebrow,
+  playgroundTitle,
+  playgroundLede,
+  playgroundReset,
+  playgroundTabsLabel,
+  playgroundTabToVon,
+  playgroundTabFromVon,
+  playgroundFrom,
+  playgroundTo,
+  playgroundHint,
+  playgroundConverted,
+  playgroundFailed,
+} from "#locales/common";
+import {
+  EXTERNAL_FORMATS,
+  externalToVon,
+  vonToExternal,
+  type ExternalFormat,
+} from "../lib/convert.ts";
+import { SAMPLE_JSON, SAMPLE_VON, SAMPLE_YAML } from "../lib/samples.ts";
+import { readLocaleId, withLocaleHint, watchDocumentLocale } from "../lib/locale-copy.ts";
+
+export default class PlaygroundPage {
+  localeId = "en-us";
+  tab = "to-von";
+  format: ExternalFormat = "json";
+  input = SAMPLE_JSON;
+  outputText = "";
+  conversionError = "";
+  conversionOk = true;
+  tabItems = [];
+  formatOptions = EXTERNAL_FORMATS.map((item) => ({ value: item.id, label: item.label }));
+  formatLabel = "";
+  inputLabel = "";
+  outputLabel = "";
+  playgroundEyebrowLabel = "";
+  playgroundTitleLabel = "";
+  playgroundLedeLabel = "";
+  playgroundResetLabel = "";
+  playgroundTabsLabel = "";
+  playgroundHintLabel = "";
+  playgroundConvertedLabel = "";
+  playgroundFailedLabel = "";
+  _unwatchLocale = null;
+
+  samples = {
+    json: SAMPLE_JSON,
+    yaml: SAMPLE_YAML,
+  };
+
+  onMount() {
+    this.applyLocaleCopy();
+    this._unwatchLocale = watchDocumentLocale((id) => this.applyLocaleCopy(id));
+    this.runConversion();
+  }
+
+  onDestroy() {
+    if (typeof this._unwatchLocale === "function") this._unwatchLocale();
+    this._unwatchLocale = null;
+  }
+
+  refreshCopy() {
+    this.playgroundEyebrowLabel = playgroundEyebrow();
+    this.playgroundTitleLabel = playgroundTitle();
+    this.playgroundLedeLabel = playgroundLede();
+    this.playgroundResetLabel = playgroundReset();
+    this.playgroundTabsLabel = playgroundTabsLabel();
+    this.playgroundHintLabel = playgroundHint();
+    this.playgroundConvertedLabel = playgroundConverted();
+    this.playgroundFailedLabel = playgroundFailed();
+    this.tabItems = [
+      { id: "to-von", title: playgroundTabToVon(), controls: "von-playground-panel" },
+      { id: "from-von", title: playgroundTabFromVon(), controls: "von-playground-panel" },
+    ];
+    this.syncLabels();
+  }
+
+  applyLocaleCopy(preferred) {
+    this.localeId = readLocaleId(preferred);
+    withLocaleHint(this.localeId, () => this.refreshCopy());
+  }
+
+  syncLabels() {
+    if (this.tab === "to-von") {
+      this.formatLabel = playgroundFrom();
+      this.inputLabel = this.format.toUpperCase();
+      this.outputLabel = "VON";
+    } else {
+      this.formatLabel = playgroundTo();
+      this.inputLabel = "VON";
+      this.outputLabel = this.format.toUpperCase();
+    }
+  }
+
+  onTabSelect(id) {
+    const prevTab = this.tab;
+    this.tab = id;
+    if (prevTab !== id) {
+      this.input = id === "to-von" ? this.samples[this.format] : SAMPLE_VON;
+    }
+    this.syncLabels();
+    this.runConversion();
+  }
+
+  onFormatChange(e) {
+    const prev = this.format;
+    const next = e?.target?.value;
+    if (!next || next === prev) return;
+    this.format = next;
+    if (this.tab === "to-von" && this.input.trim() === this.samples[prev].trim()) {
+      this.input = this.samples[next];
+    }
+    this.syncLabels();
+    this.runConversion();
+  }
+
+  onInput(e) {
+    const t = e?.target;
+    this.input = t ? String(t.value || "") : "";
+    this.runConversion();
+  }
+
+  resetSample() {
+    this.input = this.tab === "to-von" ? this.samples[this.format] : SAMPLE_VON;
+    this.runConversion();
+  }
+
+  runConversion() {
+    try {
+      if (this.tab === "to-von") {
+        this.outputText = externalToVon(this.input, this.format);
+      } else {
+        this.outputText = vonToExternal(this.input, this.format, parse);
+      }
+      this.conversionError = "";
+      this.conversionOk = true;
+    } catch (error) {
+      const message =
+        error instanceof VonParseError
+          ? error.message
+          : error instanceof Error
+            ? error.message
+            : String(error);
+      this.conversionError = message;
+      this.outputText = "";
+      this.conversionOk = false;
+    }
+  }
+}
+</script>

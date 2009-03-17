@@ -1,0 +1,20 @@
+[package]
+name = "von"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Spark engine VON meta-file format"
+
+[features]
+default = []
+serde = ["dep:miette", "dep:serde", "von-ast/serde"]
+
+[dependencies]
+miette = { workspace = true, optional = true }
+serde = { workspace = true, optional = true }
+von-ast = { path = "../von-ast" }
+von-parser = { path = "../von-parser" }
+
+[[test]]
+name = "meta_format"
+required-features = ["serde"]

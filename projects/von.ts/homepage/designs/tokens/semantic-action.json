@@ -1,0 +1,40 @@
+{
+  "entries": [
+    {
+      "key": { "path": ["action", "primary", "background"] },
+      "value": "#1F7A4D"
+    },
+    {
+      "key": { "path": ["action", "primary", "foreground"] },
+      "value": "#F4FBF6"
+    },
+    {
+      "key": { "path": ["action", "primary", "hover"] },
+      "value": "#0F4F34"
+    },
+    {
+      "key": { "path": ["action", "primary", "active"] },
+      "value": "#0A3D28"
+    },
+    {
+      "key": { "path": ["action", "secondary", "background"] },
+      "value": "rgba(255, 255, 255, 0.55)"
+    },
+    {
+      "key": { "path": ["action", "secondary", "foreground"] },
+      "value": "#14201C"
+    },
+    {
+      "key": { "path": ["action", "secondary", "border"] },
+      "value": "rgba(15, 79, 52, 0.28)"
+    },
+    {
+      "key": { "path": ["action", "secondary", "hover"] },
+      "value": "rgba(255, 255, 255, 0.75)"
+    },
+    {
+      "key": { "path": ["focus", "ring"] },
+      "value": "color-mix(in srgb, #1F7A4D 35%, transparent)"
+    }
+  ]
+}

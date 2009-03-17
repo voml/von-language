@@ -1,0 +1,19 @@
+# Package manager artifacts
+node_modules/
+.pnpm-store/
+
+# Build, test, and tooling outputs
+dist/
+build/
+coverage/
+.turbo/
+*.tsbuildinfo
+
+# Local environment and editor state
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

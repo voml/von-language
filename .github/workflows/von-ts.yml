@@ -1,0 +1,53 @@
+name: von.ts
+
+on:
+  push:
+    branches: [master, dev]
+    paths:
+      - "projects/von.ts/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/von-ts.yml"
+  pull_request:
+    branches: [master, dev]
+    paths:
+      - "projects/von.ts/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/von-ts.yml"
+
+jobs:
+  check:
+    name: test · typecheck · build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Test packages
+        run: pnpm test
+
+      - name: Typecheck packages
+        run: pnpm typecheck
+
+      - name: Typecheck homepage
+        run: pnpm --filter @game-gpt/von-homepage typecheck
+
+      - name: Build homepage
+        run: pnpm homepage
