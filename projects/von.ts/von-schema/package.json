@@ -2,6 +2,7 @@
   "name": "@game-gpt/von-schema",
   "version": "0.1.0",
   "description": "Schema types and validation for Virtual Object Notation (VON) documents",
+  "homepage": "https://von-language.pages.dev/",
   "type": "module",
   "license": "MPL-2.0",
   "sideEffects": false,

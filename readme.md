@@ -2,6 +2,8 @@
 
 **Virtual Object Notation: structured data that still feels written for people.**
 
+**Homepage:** [von-language.pages.dev](https://von-language.pages.dev/) — language tour and browser playground.
+
 VON is a compact, human-editable data format for configuration, metadata, and other versioned documents. It keeps JSON's
 small and portable value model, then adds the things people miss as soon as a file has to be maintained by hand:
 comments, bare keys, and a calm canonical layout.
