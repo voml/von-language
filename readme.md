@@ -130,9 +130,12 @@ von-language/
 ├── .github/workflows/        TypeScript and Rust verification
 ├── scripts/                  Repo automation (`pnpm fmt`)
 └── projects/
-    ├── von.ts/               TS parser, schema validator, and playground
+    ├── von.ts/               TS parser, schema validator, skills, and playground
     └── von.rs/               Rust value model, parser, CST, and Serde bridge
 ```
+
+Published npm packages include `@game-gpt/von`, `@game-gpt/von-schema`, and `@game-gpt/von-skills` (Agent Skills for `.von`
+authoring via `npx skills add`).
 
 The repository currently ships working TypeScript and Rust implementations. Editor tooling is represented by a private
 placeholder package and is not yet presented as a finished extension.

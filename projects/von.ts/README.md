@@ -9,6 +9,7 @@ the core language package, a small schema vocabulary, and the public-facing brow
 |---------------------------------------------|--------------------------|------------------------------------------------------------------|
 | [`von/`](./von/README.md)                   | `@game-gpt/von`          | Lexer, parser, canonical writer, tokens, errors, and `VonValue`  |
 | [`von-schema/`](./von-schema/README.md)     | `@game-gpt/von-schema`   | JSON Schema-inspired validation for the VON V1 value model       |
+| [`von-skills/`](./von-skills/README.md)     | `@game-gpt/von-skills`   | Agent Skills for **users** authoring `.von` (`npx skills add`)   |
 | [`homepage/`](./homepage/README.md)         | `@game-gpt/von-homepage` | Bilingual language site and interactive JSON/YAML/VON playground |
 | [`von-on-vscode/`](von-on-vscode/README.md) | `@game-gpt/vscode-von`   | Reserved workspace for future VS Code support                    |
 

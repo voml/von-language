@@ -21,6 +21,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const JS_PACKAGES = [
     { dir: 'projects/von.ts/von', prebuild: 'pnpm --filter @game-gpt/von build' },
     { dir: 'projects/von.ts/von-schema', prebuild: 'pnpm --filter @game-gpt/von-schema build' },
+    { dir: 'projects/von.ts/von-skills' },
 ];
 
 function fail(msg) {

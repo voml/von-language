@@ -67,7 +67,7 @@ function loadLocalEnv(filePath) {
 const localEnv = loadLocalEnv(ENV_PATH);
 
 /** Keep in sync with scripts/ci/publish-npm.mjs (real publish package set). */
-const JS_STUBS = ['@game-gpt/von', '@game-gpt/von-schema'];
+const JS_STUBS = ['@game-gpt/von', '@game-gpt/von-schema', '@game-gpt/von-skills'];
 
 const VERSION = '0.0.0';
 
