@@ -42,7 +42,9 @@ export function watchDocumentLocale(onChange: (localeId: string) => void): () =>
 
 export function currentPath(): string {
   if (typeof window === "undefined") return "/";
-  return window.location.pathname || "/";
+  const loc = window.location;
+  if (!loc || typeof loc.pathname !== "string") return "/";
+  return loc.pathname || "/";
 }
 
 export function isActivePath(href: string): boolean {

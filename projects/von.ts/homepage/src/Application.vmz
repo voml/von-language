@@ -1,11 +1,5 @@
 <template>
-  <div class="shell">
-    <SiteHeader />
-    <main class="main">
-      <slot />
-    </main>
-    <SiteFooter />
-  </div>
+  <slot />
 </template>
 
 <script client>

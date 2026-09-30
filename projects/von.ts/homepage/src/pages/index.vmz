@@ -1,4 +1,6 @@
 <template>
+  <SiteHeader />
+  <main class="main">
   <div class="home">
     <section class="home__hero">
       <div>
@@ -71,6 +73,8 @@
       </div>
     </section>
   </div>
+  </main>
+  <SiteFooter />
 </template>
 
 <script client>

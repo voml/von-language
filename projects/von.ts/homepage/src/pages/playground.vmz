@@ -1,4 +1,6 @@
 <template>
+  <SiteHeader />
+  <main class="main">
   <div class="playground">
     <header class="playground__head">
       <div>
@@ -51,6 +53,8 @@
       </div>
     </Tabs>
   </div>
+  </main>
+  <SiteFooter />
 </template>
 
 <script client>
