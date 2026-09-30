@@ -2,35 +2,35 @@
   "entries": [
     {
       "key": { "path": ["status", "info", "accent"] },
-      "value": "#1F7A4D"
+      "value": "#0EA5E9"
     },
     {
       "key": { "path": ["status", "info", "foreground"] },
-      "value": "#0F4F34"
+      "value": "#0369A1"
     },
     {
       "key": { "path": ["status", "success", "accent"] },
-      "value": "#1F7A4D"
+      "value": "#059669"
     },
     {
       "key": { "path": ["status", "success", "foreground"] },
-      "value": "#0F4F34"
+      "value": "#047857"
     },
     {
       "key": { "path": ["status", "warning", "accent"] },
-      "value": "#B85A2A"
+      "value": "#F59E0B"
     },
     {
       "key": { "path": ["status", "warning", "foreground"] },
-      "value": "#8A441F"
+      "value": "#B45309"
     },
     {
       "key": { "path": ["status", "danger", "accent"] },
-      "value": "#B85A2A"
+      "value": "#DC2626"
     },
     {
       "key": { "path": ["status", "danger", "foreground"] },
-      "value": "#8A441F"
+      "value": "#B91C1C"
     }
   ]
 }

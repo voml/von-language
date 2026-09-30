@@ -18,13 +18,13 @@ body {
   line-height: 1.5;
   color: var(--vmz-text-ink);
   background:
-    radial-gradient(1200px 700px at 12% -10%, #d9ebe0 0%, transparent 55%),
-    radial-gradient(900px 600px at 100% 0%, #f0e2d4 0%, transparent 50%),
-    linear-gradient(180deg, #f7faf6 0%, #eef3ec 45%, #e7eee6 100%);
+    radial-gradient(1200px 700px at 12% -10%, #cce9f8 0%, transparent 55%),
+    radial-gradient(900px 600px at 100% 0%, #fef3c7 0%, transparent 50%),
+    linear-gradient(180deg, #f5fafd 0%, #eef6fc 45%, #e6f2fa 100%);
 }
 
 ::selection {
-  background: rgba(31, 122, 77, 0.22);
+  background: rgba(14, 165, 233, 0.22);
 }
 
 .shell {
@@ -42,8 +42,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 20;
-  border-bottom: 1px solid var(--von-mist, rgba(20, 32, 28, 0.08));
-  background: rgba(247, 250, 246, 0.86);
+  border-bottom: 1px solid var(--vmz-line-subtle);
+  background: color-mix(in srgb, var(--vmz-surface-mist) 88%, transparent);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--vmz-brand-primary) 14%, transparent);
   backdrop-filter: blur(12px);
 }
 
@@ -71,7 +72,7 @@ body {
   font-size: 1.45rem;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--vmz-scale-600);
+  color: var(--vmz-brand-primary);
 }
 
 .site-brand__tag {
@@ -97,7 +98,7 @@ body {
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
-  color: var(--vmz-scale-600);
+  color: var(--vmz-brand-primary);
 }
 
 .site-nav a[aria-current="page"]::after {
@@ -119,17 +120,22 @@ body {
 .site-header__pkg {
   display: none;
   padding: 0.2rem 0.45rem;
-  border: 1px solid var(--von-mist, rgba(20, 32, 28, 0.08));
-  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid color-mix(in srgb, var(--vmz-brand-primary) 24%, transparent);
+  background: color-mix(in srgb, var(--vmz-surface-paper) 62%, transparent);
   font-family: var(--vmz-font-mono);
   font-size: 0.72rem;
-  color: var(--vmz-text-steel);
+  color: var(--vmz-scale-700);
 }
 
 .site-footer {
   margin-top: 4rem;
-  border-top: 1px solid var(--von-mist, rgba(20, 32, 28, 0.08));
-  background: rgba(255, 255, 255, 0.35);
+  border-top: 1px solid var(--vmz-line-subtle);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--vmz-surface-paper) 52%, transparent) 0%,
+      color-mix(in srgb, var(--vmz-scale-50) 72%, transparent) 100%
+    );
 }
 
 .site-footer__inner {
@@ -147,7 +153,7 @@ body {
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--vmz-scale-600);
+  color: var(--vmz-brand-primary);
 }
 
 .site-footer__full {
@@ -175,7 +181,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--vmz-text-steel);
+  color: var(--vmz-scale-600);
 }
 
 .site-footer__cols ul {
@@ -193,12 +199,13 @@ body {
 }
 
 .site-footer__cols a:hover {
-  color: var(--vmz-scale-600);
+  color: var(--vmz-brand-primary);
 }
 
 .site-footer__cols code {
   font-family: var(--vmz-font-mono);
   font-size: 0.82rem;
+  color: var(--vmz-scale-700);
 }
 
 .site-footer__bar {
@@ -209,7 +216,8 @@ body {
   max-width: 1120px;
   margin: 0 auto;
   padding: 1rem 1.25rem 1.4rem;
-  border-top: 1px solid var(--von-mist, rgba(20, 32, 28, 0.08));
+  border-top: 1px solid var(--vmz-line-subtle);
+  background: color-mix(in srgb, var(--vmz-scale-50) 45%, transparent);
   color: var(--vmz-text-steel);
   font-size: 0.85rem;
 }
@@ -238,7 +246,7 @@ body {
 
 .home__eyebrow {
   margin: 0 0 0.75rem;
-  color: var(--vmz-text-steel);
+  color: var(--vmz-scale-600);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -252,7 +260,7 @@ body {
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 0.85;
-  color: var(--vmz-scale-600);
+  color: var(--vmz-brand-primary);
 }
 
 .home__full-name {
@@ -286,17 +294,17 @@ body {
 .home__orbit {
   position: absolute;
   inset: 10% 8%;
-  border: 1px solid rgba(31, 122, 77, 0.35);
+  border: 1px solid rgba(14, 165, 233, 0.35);
   border-radius: 42% 58% 46% 54% / 48% 42% 58% 52%;
   background:
     radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.7), transparent 40%),
-    linear-gradient(145deg, rgba(31, 122, 77, 0.12), rgba(184, 90, 42, 0.1));
+    linear-gradient(145deg, rgba(14, 165, 233, 0.12), rgba(245, 158, 11, 0.1));
   animation: von-morph 12s ease-in-out infinite;
 }
 
 .home__shard {
   position: absolute;
-  border: 1px solid rgba(20, 32, 28, 0.12);
+  border: 1px solid color-mix(in srgb, var(--vmz-brand-primary) 16%, transparent);
   background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(6px);
 }
@@ -355,8 +363,8 @@ body {
 .home__feature-grid article,
 .home__pkg-grid article {
   padding: 1.15rem 1.2rem;
-  border-left: 3px solid var(--vmz-action-primary-background);
-  background: rgba(255, 255, 255, 0.42);
+  border-left: 3px solid var(--vmz-brand-primary);
+  background: color-mix(in srgb, var(--vmz-surface-paper) 55%, transparent);
 }
 
 .home__feature-grid h3 {
@@ -378,7 +386,7 @@ body {
   margin-bottom: 0.45rem;
   font-family: var(--vmz-font-mono);
   font-size: 0.9rem;
-  color: var(--vmz-scale-600);
+  color: var(--vmz-brand-primary);
 }
 
 .playground {
