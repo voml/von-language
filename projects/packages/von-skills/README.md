@@ -33,9 +33,9 @@ See [`skills/von-language/SKILL.md`](./skills/von-language/SKILL.md) and
 
 ## Develop
 
-Source: [voml/von-language](https://github.com/voml/von-language) → `projects/von.ts/von-skills`
+Source: [voml/von-language](https://github.com/voml/von-language) → `projects/packages/von-skills`
 
 ```bash
 pnpm --filter @game-gpt/von-skills typecheck
-npx skills add ./projects/von.ts/von-skills --list
+npx skills add ./projects/packages/von-skills --list
 ```

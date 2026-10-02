@@ -23,7 +23,7 @@ pnpm homepage
 This runs the built-in `static` profile (`assembly: static-cdn`) for **`--target browser`**, and writes under:
 
 ```text
-projects/von.ts/homepage/dist/cdn/
+projects/packages/homepage/dist/cdn/
 ```
 
 `dist/<name>` is the **delivery slice** to upload (Cloudflare Pages, Netlify, any object/CDN host). It is not the VMZ
@@ -46,7 +46,7 @@ pnpm --filter @game-gpt/von-homepage serve
 
 | Setting | Value |
 |---------|-------|
-| Root directory | repository root (`.`) — **not** `projects/von.ts` |
+| Root directory | repository root (`.`) — **not** `projects/packages` |
 | Build command | `pnpm homepage` |
 | Output / publish directory | `dist/cdn` |
 | Node.js | 22 |
@@ -54,7 +54,7 @@ pnpm --filter @game-gpt/von-homepage serve
 
 `VMZ_SITE_ORIGIN` is a **build-time** input for canonical / sitemap / `hreflang`. Set it on Cloudflare Pages (or any host running `pnpm homepage`) to the public origin.
 
-`pnpm homepage` builds to `projects/von.ts/homepage/dist/cdn`, then syncs a copy to repo-root `dist/cdn` for static hosts. Do **not** set root to `projects/von.ts` while output stays `projects/von.ts/...` — Cloudflare will double the path.
+`pnpm homepage` builds to `projects/packages/homepage/dist/cdn`, then syncs a copy to repo-root `dist/cdn` for static hosts. Do **not** set root to `projects/packages` while output stays `projects/packages/...` — Cloudflare will double the path.
 
 Do **not** add SPA `_redirects` fallback — `static` emits real per-route HTML and `404.html`.
 
