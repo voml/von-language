@@ -13,8 +13,8 @@
         "build": "pnpm -r --filter @game-gpt/von --filter @game-gpt/von-schema run build",
         "test": "pnpm build && pnpm -r --filter @game-gpt/von --filter @game-gpt/von-schema run test",
         "typecheck": "pnpm -r --filter @game-gpt/von --filter @game-gpt/von-schema --filter @game-gpt/von-skills --filter @game-gpt/von-homepage run typecheck",
-        "test:rs": "cargo test --manifest-path projects/von.rs/Cargo.toml --workspace --all-features",
-        "check:rs": "cargo check --manifest-path projects/von.rs/Cargo.toml --workspace --all-features",
+        "test:rs": "cargo test --workspace --all-features",
+        "check:rs": "cargo check --workspace --all-features",
         "placeholder": "nifty publish --placeholder --dry-run",
         "placeholder:publish": "nifty publish --placeholder",
         "placeholder:trust": "nifty trust"

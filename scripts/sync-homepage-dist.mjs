@@ -3,7 +3,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const src = join(root, "projects/von.ts/homepage/dist/cdn");
+const src = join(root, "projects/packages/homepage/dist/cdn");
 const dest = join(root, "dist/cdn");
 
 rmSync(dest, { recursive: true, force: true });

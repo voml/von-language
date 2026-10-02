@@ -69,7 +69,7 @@ const schema: VonSchema = {
 const result = validate(parse(`{ name: "atlas", replicas: 3 }`), schema);
 ```
 
-See [`projects/von.ts`](./projects/von.ts/README.md) for package-level APIs, the browser playground, and workspace
+See [`projects/packages`](./projects/packages/README.md) for package-level APIs, the browser playground, and workspace
 commands.
 
 ## Start in Rust
@@ -94,7 +94,7 @@ struct Service {
 let service: Service = von::from_str(r#"{ name: "atlas", replicas: 3 }"#) ?;
 ```
 
-See [`projects/von.rs`](./projects/von.rs/README.md) for feature flags, crate boundaries, and development commands.
+See [`projects/crates`](./projects/crates/README.md) for feature flags, crate boundaries, and development commands.
 
 ## The V1 language
 
@@ -130,8 +130,10 @@ von-language/
 ├── .github/workflows/        TypeScript and Rust verification
 ├── scripts/                  Repo automation (`pnpm fmt`)
 └── projects/
-    ├── von.ts/               TS parser, schema validator, skills, and playground
-    └── von.rs/               Rust value model, parser, CST, and Serde bridge
+    ├── packages/             TS parser, schema validator, skills, and playground
+    ├── crates/               Rust value model, parser, CST, and Serde bridge
+    ├── von.cs/               C# host (placeholder)
+    └── von.kt/               Kotlin host (placeholder)
 ```
 
 Published npm packages include `@game-gpt/von`, `@game-gpt/von-schema`, and `@game-gpt/von-skills` (Agent Skills for `.von`
@@ -155,7 +157,6 @@ pnpm dev
 Rust:
 
 ```bash
-cd projects/von.rs
 cargo fmt --all -- --check
 cargo check --workspace --all-features
 cargo clippy --workspace --all-features --all-targets -- -D warnings
@@ -174,4 +175,4 @@ Broader editor integrations and additional language implementations remain futur
 
 This repository is licensed under the [Mozilla Public License 2.0](./License.md). The Rust parser, CST, and Serde core
 include adapted work whose history and notices are recorded in [
-`projects/von.rs/NOTICE.md`](./projects/von.rs/NOTICE.md).
+`projects/crates/NOTICE.md`](./projects/crates/NOTICE.md).

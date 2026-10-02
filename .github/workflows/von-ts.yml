@@ -4,7 +4,7 @@ on:
   push:
     branches: [master, dev]
     paths:
-      - "projects/von.ts/**"
+      - "projects/packages/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
@@ -12,7 +12,7 @@ on:
   pull_request:
     branches: [master, dev]
     paths:
-      - "projects/von.ts/**"
+      - "projects/packages/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"

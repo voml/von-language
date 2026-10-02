@@ -3,16 +3,16 @@ name: von.rs
 on:
   push:
     paths:
-      - "projects/von.rs/**"
+      - "projects/crates/**"
       - ".github/workflows/von-rs.yml"
   pull_request:
     paths:
-      - "projects/von.rs/**"
+      - "projects/crates/**"
       - ".github/workflows/von-rs.yml"
 
 defaults:
   run:
-    working-directory: projects/von.rs
+    working-directory: .
 
 env:
   CARGO_TERM_COLOR: always
@@ -35,7 +35,7 @@ jobs:
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
         with:
-          workspaces: projects/von.rs -> target
+          workspaces: . -> target
 
       - name: Format
         run: cargo fmt --all -- --check
