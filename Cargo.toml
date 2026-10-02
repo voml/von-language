@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["von", "von-ast", "von-parser"]
+members = ["projects/crates/*"]
 
 [workspace.package]
 version = "0.1.0"
