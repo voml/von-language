@@ -1,4 +1,4 @@
-import { asArray, asInteger, asObject, asStr, type VonValue } from "@game-gpt/von";
+import { asArray, asInteger, asObject, asStr, type VonValue } from "@voml/von";
 import type { VonSchema, VonSchemaType, VonValidationError, VonValidationResult } from "./types.js";
 
 export function validate(data: VonValue, schema: VonSchema): VonValidationResult {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { VonParseError, parse, stringifyIndented } from "./index.js";
 
-describe("@game-gpt/von", () => {
+describe("@voml/von-language", () => {
   it("round-trips nested documents through canonical von", () => {
     const meta = {
       format: "app.config",

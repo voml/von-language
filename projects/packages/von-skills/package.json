@@ -1,5 +1,5 @@
 {
-    "name": "@game-gpt/von-skills",
+    "name": "@voml/von-skills",
     "version": "0.1.0",
     "description": "Agent Skills for users authoring VON (.von) documents — install via npx; guides TypeScript, Rust, and other stacks",
     "type": "module",

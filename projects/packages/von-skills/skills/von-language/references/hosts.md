@@ -10,13 +10,13 @@ The skill teaches your **AI assistant** how to write `.von` files. It does not r
 
 ```bash
 # Install into the current project (recommended)
-npx skills add @game-gpt/von-skills --skill von-language -y
+npx skills add @voml/von-skills --skill von-language -y
 
 # Preview skills in the package
-npx skills add @game-gpt/von-skills --list
+npx skills add @voml/von-skills --list
 
 # Install for all projects on this machine
-npx skills add @game-gpt/von-skills --skill von-language -y -g
+npx skills add @voml/von-skills --skill von-language -y -g
 ```
 
 Works with agents supported by the [Agent Skills](https://agentskills.io/) ecosystem (for example Cursor, Claude Code,
@@ -39,8 +39,8 @@ Pick the row that matches **your application language**. The `.von` **syntax is 
 | Your stack                  | Install / validate                         | Typical workflow                                      |
 |-----------------------------|--------------------------------------------|-------------------------------------------------------|
 | **Browser / playground**    | [von-language.pages.dev](https://von-language.pages.dev/playground) | Paste or edit → compare JSON/YAML/VON                 |
-| **TypeScript / JavaScript** | [`@game-gpt/von`](#typescript--javascript) | `parse()` / `stringifyIndented()` in app or scripts   |
-| **Schema validation**       | [`@game-gpt/von-schema`](#schema-validation) | Parse then `validate()` against `VonSchema`         |
+| **TypeScript / JavaScript** | [`@voml/von-language`](#typescript--javascript) | `parse()` / `stringifyIndented()` in app or scripts   |
+| **Schema validation**       | [`@voml/von-schema`](#schema-validation) | Parse then `validate()` against `VonSchema`         |
 | **Rust**                    | [`von` crate](#rust)                       | `VonParser::parse` / optional Serde `from_str`        |
 | **Other languages**         | [No local parser yet](#other-languages)    | Edit `.von` in repo; validate in CI via TS/Rust host  |
 
@@ -49,13 +49,13 @@ Pick the row that matches **your application language**. The `.von` **syntax is 
 ### TypeScript / JavaScript
 
 ```bash
-npm install @game-gpt/von
+npm install @voml/von-language
 # or
-pnpm add @game-gpt/von
+pnpm add @voml/von-language
 ```
 
 ```ts
-import { parse, stringifyIndented, VonParseError } from "@game-gpt/von";
+import { parse, stringifyIndented, VonParseError } from "@voml/von-language";
 
 try {
   const value = parse(`
@@ -77,12 +77,12 @@ Canonical output sorts object keys and uses two-space indentation — useful for
 When a document must match a contract (required fields, integer ranges, `const` discriminators):
 
 ```bash
-pnpm add @game-gpt/von @game-gpt/von-schema
+pnpm add @voml/von-language @voml/von-schema
 ```
 
 ```ts
-import { parse } from "@game-gpt/von";
-import { validate, type VonSchema } from "@game-gpt/von-schema";
+import { parse } from "@voml/von-language";
+import { validate, type VonSchema } from "@voml/von-schema";
 
 const schema: VonSchema = {
   type: "object",
@@ -138,9 +138,10 @@ Do not invent a parallel `.von` dialect — stay on the V1 value model.
 
 | Package               | Role                                              |
 |-----------------------|---------------------------------------------------|
-| `@game-gpt/von-skills`| **This package** — AI help writing VON (any language) |
-| `@game-gpt/von`       | TypeScript parser and canonical writer            |
-| `@game-gpt/von-schema`| JSON Schema–inspired validation for `VonValue`    |
+| `@voml/von-skills`| **This package** — AI help writing VON (any language) |
+| `@voml/von-language`  | TypeScript parser and canonical writer            |
+| `@voml/von`           | `VonValue` value model and type guards            |
+| `@voml/von-schema`| JSON Schema–inspired validation for `VonValue`    |
 | `von` (Rust crate)    | Parser, value model, optional Serde bridge        |
 
 Homepage: [von-language.pages.dev](https://von-language.pages.dev/)

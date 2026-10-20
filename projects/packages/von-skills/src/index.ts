@@ -1,5 +1,5 @@
 /**
- * User-facing skill catalog for `@game-gpt/von-skills`.
+ * User-facing skill catalog for `@voml/von-skills`.
  * Teaches agents how to help end users author `.von` configuration and metadata documents.
  */
 

@@ -3,7 +3,7 @@
 **Live site:** [von-language.pages.dev](https://von-language.pages.dev/)
 
 VMZ application: bilingual intro at `/` and an interactive playground at `/playground` for JSON, YAML, and VON conversion.
-Uses `@vmz/ui`, `@vmz/ui-icons`, and the workspace `@game-gpt/von` parser.
+Uses `@vmz/ui`, `@vmz/ui-icons`, and the workspace `@voml/von-language` parser.
 
 ## Run locally
 
@@ -32,7 +32,7 @@ projects/packages/homepage/dist/cdn/
 Preview:
 
 ```bash
-pnpm --filter @game-gpt/von-homepage serve
+pnpm --filter @voml/von-homepage serve
 ```
 
 ## Output layout
@@ -58,4 +58,4 @@ pnpm --filter @game-gpt/von-homepage serve
 
 Do **not** add SPA `_redirects` fallback — `static` emits real per-route HTML and `404.html`.
 
-Parser APIs: [`@game-gpt/von`](../von/README.md).
+Parser APIs: [`@voml/von-language`](../von-language/README.md).

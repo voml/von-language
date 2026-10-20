@@ -1,5 +1,5 @@
 {
-    "name": "@game-gpt/von-workspace",
+    "name": "@voml/von-workspace",
     "private": true,
     "description": "Virtual Object Notation (VON) language workspace",
     "homepage": "https://von-language.pages.dev/",
@@ -8,11 +8,11 @@
     "scripts": {
         "fmt": "node scripts/format.mjs",
         "fmt:check": "node scripts/format.mjs --check",
-        "dev": "pnpm --filter @game-gpt/von-homepage dev",
-        "homepage": "pnpm --filter @game-gpt/von-homepage build:cdn && node scripts/sync-homepage-dist.mjs",
-        "build": "pnpm -r --filter @game-gpt/von --filter @game-gpt/von-schema run build",
-        "test": "pnpm build && pnpm -r --filter @game-gpt/von --filter @game-gpt/von-schema run test",
-        "typecheck": "pnpm -r --filter @game-gpt/von --filter @game-gpt/von-schema --filter @game-gpt/von-skills --filter @game-gpt/von-homepage run typecheck",
+        "dev": "pnpm --filter @voml/von-homepage dev",
+        "homepage": "pnpm --filter @voml/von-homepage build:cdn && node scripts/sync-homepage-dist.mjs",
+        "build": "pnpm -r --filter @voml/von --filter @voml/von-language --filter @voml/von-schema run build",
+        "test": "pnpm build && pnpm -r --filter @voml/von --filter @voml/von-language --filter @voml/von-schema run test",
+        "typecheck": "pnpm -r --filter @voml/von --filter @voml/von-language --filter @voml/von-schema --filter @voml/von-skills --filter @voml/von-homepage run typecheck",
         "test:rs": "cargo test --workspace --all-features",
         "check:rs": "cargo check --workspace --all-features",
         "placeholder": "nifty publish --placeholder --dry-run",

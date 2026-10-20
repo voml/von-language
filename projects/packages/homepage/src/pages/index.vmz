@@ -60,11 +60,11 @@
       </div>
       <div class="home__pkg-grid">
         <article>
-          <code>@game-gpt/von</code>
+          <code>@voml/von-language</code>
           <p>{homePkgVonLabel}</p>
         </article>
         <article>
-          <code>@game-gpt/von-schema</code>
+          <code>@voml/von-schema</code>
           <p>{homePkgSchemaLabel}</p>
         </article>
       </div>

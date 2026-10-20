@@ -1,71 +1,43 @@
-# `@game-gpt/von`
+# `@voml/von`
 
-The core TypeScript implementation of **VON (Virtual Object Notation)**. It is a focused, dependency-free language
-package for reading human-authored VON and writing deterministic VON from application data.
+The **VON (Virtual Object Notation)** value model for TypeScript: the canonical `VonValue` union plus the guards and
+accessors that inspect or narrow it. This package is dependency-free and never touches VON source text — lexing,
+parsing, diagnostics, and formatting live in [`@voml/von-language`](../von-language/README.md).
 
 ## What you get
 
-- `parse` and `VonParser` for VON V1 documents;
-- `stringify` and `stringifyIndented` for canonical output;
-- `Lexer`, tokens, and lexical helpers for tooling;
-- `VonParseError` for syntax failures;
-- `VonValue` plus narrowing helpers for consumers that inspect data manually.
+- `VonValue` — the canonical V1 value union;
+- `isVonObject` — object narrowing that rejects arrays and `null`;
+- `asBool` / `asInteger` / `asStr` / `asArray` / `asObject` — non-coercing accessors.
 
-## Parse a document
+## The V1 value model
 
 ```ts
-import { parse } from "@game-gpt/von";
+import { asInteger, asStr, isVonObject, type VonValue } from "@voml/von";
 
-const config = parse(`
-  # Comments are part of the authoring experience.
-  { name: "atlas", enabled: true, ports: [8080, 8443] }
-`);
-```
-
-`parse` returns a `VonValue`: `null`, boolean, integer, string, array, or a string-keyed object. VON V1 does not accept
-floating-point literals.
-
-## Write canonical VON
-
-```ts
-import { stringifyIndented } from "@game-gpt/von";
-
-const text = stringifyIndented({ version: 1, name: "atlas", enabled: true });
-```
-
-Indented output uses two spaces and lexicographically sorted object keys. That makes it suitable for generated
-configuration, snapshots, and normalization tools where stable diffs matter.
-
-## Handle syntax errors
-
-```ts
-import { parse, VonParseError } from "@game-gpt/von";
-
-try {
-  parse(`{ scale: 1.5 }`);
-} catch (error) {
-  if (error instanceof VonParseError) console.error(error.message);
+const value: VonValue = { name: "atlas", replicas: 3 };
+if (isVonObject(value)) {
+  asStr(value.name); // "atlas"
+  asInteger(value.replicas); // 3
 }
 ```
 
-## Build language-aware tools
+`VonValue` is `null`, boolean, safe integer, string, array, or a string-keyed object. Floating-point numbers are outside
+VON V1, so `asInteger` returns `undefined` for them instead of rounding.
 
-The lower-level exports are intentionally public for formatters, editors, and diagnostic tools:
+## Where the rest lives
 
-```ts
-import { Lexer, isTrivia, type Token } from "@game-gpt/von";
-```
-
-Use `Lexer` when token-level information matters. Use `parse` for application data. Document-specific validation belongs
-in the sibling
-[`@game-gpt/von-schema`](../von-schema/README.md) package.
+| Need                                                     | Package                                        |
+|----------------------------------------------------------|------------------------------------------------|
+| Parse `.von` text, tokens, diagnostics, canonical writers | [`@voml/von-language`](../von-language/README.md) |
+| Validate a document against a contract                    | [`@voml/von-schema`](../von-schema/README.md)  |
 
 ## Develop
 
 ```bash
-pnpm --filter @game-gpt/von test
-pnpm --filter @game-gpt/von typecheck
-pnpm --filter @game-gpt/von build
+pnpm --filter @voml/von test
+pnpm --filter @voml/von typecheck
+pnpm --filter @voml/von build
 ```
 
 Run these commands from the **repository root**. Licensed under

@@ -2,7 +2,7 @@ import { VonParseError } from "./error.js";
 import { Lexer } from "./lexer.js";
 import { decodeStringLiteral } from "./lexical.js";
 import type { Token, TokenKind } from "./token.js";
-import type { VonValue } from "./value.js";
+import type { VonValue } from "@voml/von";
 
 export class VonParser {
   private readonly source: string;

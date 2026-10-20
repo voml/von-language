@@ -18,8 +18,8 @@
         <div>
           <h2>{footerPackagesLabel}</h2>
           <ul>
-            <li><code>@game-gpt/von</code></li>
-            <li><code>@game-gpt/von-schema</code></li>
+            <li><code>@voml/von-language</code></li>
+            <li><code>@voml/von-schema</code></li>
           </ul>
         </div>
         <div>

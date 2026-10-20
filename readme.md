@@ -41,7 +41,7 @@ the syntax, value model, parsing, and deterministic text representation.
 ## Start in TypeScript
 
 ```ts
-import {parse, stringifyIndented} from "@game-gpt/von";
+import {parse, stringifyIndented} from "@voml/von-language";
 
 const document = parse(`
   # Service metadata
@@ -51,11 +51,11 @@ const document = parse(`
 console.log(stringifyIndented(document));
 ```
 
-Use `@game-gpt/von-schema` when a document also needs an explicit validation contract:
+Use `@voml/von-schema` when a document also needs an explicit validation contract:
 
 ```ts
-import {parse} from "@game-gpt/von";
-import {validate, type VonSchema} from "@game-gpt/von-schema";
+import {parse} from "@voml/von-language";
+import {validate, type VonSchema} from "@voml/von-schema";
 
 const schema: VonSchema = {
     type: "object",
@@ -136,7 +136,7 @@ von-language/
     └── von.kt/               Kotlin host (placeholder)
 ```
 
-Published npm packages include `@game-gpt/von`, `@game-gpt/von-schema`, and `@game-gpt/von-skills` (Agent Skills for `.von`
+Published npm packages include `@voml/von`, `@voml/von-language`, `@voml/von-schema`, and `@voml/von-skills` (Agent Skills for `.von`
 authoring via `npx skills add`).
 
 The repository currently ships working TypeScript and Rust implementations. Editor tooling is represented by a private

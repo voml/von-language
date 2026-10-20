@@ -1,15 +1,15 @@
-# `@game-gpt/von-schema`
+# `@voml/von-schema`
 
 Validation for applications that store structured documents in VON.
 
-VON defines a portable value format; it does not decide which fields your application requires. `@game-gpt/von-schema`
+VON defines a portable value format; it does not decide which fields your application requires. `@voml/von-schema`
 fills that deliberate gap with a small, JSON Schema-inspired vocabulary designed around VON V1 values.
 
 ## Validate a document
 
 ```ts
-import {parse} from "@game-gpt/von";
-import {validate, type VonSchema} from "@game-gpt/von-schema";
+import {parse} from "@voml/von-language";
+import {validate, type VonSchema} from "@voml/von-schema";
 
 const schema: VonSchema = {
     type: "object",
@@ -55,11 +55,11 @@ in VON V1. This package is JSON Schema-inspired rather than a claim of complete 
 ## Develop
 
 ```bash
-pnpm --filter @game-gpt/von-schema test
-pnpm --filter @game-gpt/von-schema typecheck
-pnpm --filter @game-gpt/von-schema build
+pnpm --filter @voml/von-schema test
+pnpm --filter @voml/von-schema typecheck
+pnpm --filter @voml/von-schema build
 ```
 
 Run these commands from the **repository root**. Licensed under
 [MPL-2.0](../../../License.md). Start with
-[`@game-gpt/von`](../von/README.md) when you need parsing or serialization.
+[`@voml/von-language`](../von-language/README.md) when you need parsing or serialization.

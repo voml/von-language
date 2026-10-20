@@ -14,7 +14,7 @@
 
       <div class="site-header__aside">
         <LocaleSwitch />
-        <code class="site-header__pkg">@game-gpt/von</code>
+        <code class="site-header__pkg">@voml/von-language</code>
         <Button type="button" onClick={() => this.goPlayground()}>{navConvertLabel}</Button>
       </div>
     </div>

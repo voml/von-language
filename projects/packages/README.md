@@ -5,19 +5,20 @@ the core language package, a small schema vocabulary, and the public-facing brow
 
 ## Packages
 
-| Directory                                   | Package                  | What it provides                                                 |
-|---------------------------------------------|--------------------------|------------------------------------------------------------------|
-| [`von/`](./von/README.md)                   | `@game-gpt/von`          | Lexer, parser, canonical writer, tokens, errors, and `VonValue`  |
-| [`von-schema/`](./von-schema/README.md)     | `@game-gpt/von-schema`   | JSON Schema-inspired validation for the VON V1 value model       |
-| [`von-skills/`](./von-skills/README.md)     | `@game-gpt/von-skills`   | Agent Skills for **users** authoring `.von` (`npx skills add`)   |
-| [`homepage/`](./homepage/README.md)         | `@game-gpt/von-homepage` | Bilingual language site and interactive JSON/YAML/VON playground |
-| [`von-on-vscode/`](von-on-vscode/README.md) | `@game-gpt/vscode-von`   | Reserved workspace for future VS Code support                    |
+| Directory                                   | Package                | What it provides                                                 |
+|---------------------------------------------|------------------------|------------------------------------------------------------------|
+| [`von/`](./von/README.md)                   | `@voml/von`            | Canonical `VonValue`, type guards, and host conversion helpers   |
+| [`von-language/`](./von-language/README.md) | `@voml/von-language`   | Lexer, parser, tokens, parse diagnostics, and canonical writers  |
+| [`von-schema/`](./von-schema/README.md)     | `@voml/von-schema`     | JSON Schema-inspired validation for the VON V1 value model       |
+| [`von-skills/`](./von-skills/README.md)     | `@voml/von-skills`     | Agent Skills for **users** authoring `.von` (`npx skills add`)   |
+| [`homepage/`](./homepage/README.md)         | `@voml/von-homepage`   | Bilingual language site and interactive JSON/YAML/VON playground |
+| [`von-on-vscode/`](von-on-vscode/README.md) | `@voml/vscode-von`     | Reserved workspace for future VS Code support                    |
 
 ## A small end-to-end example
 
 ```ts
-import {parse, stringifyIndented} from "@game-gpt/von";
-import {validate, type VonSchema} from "@game-gpt/von-schema";
+import {parse, stringifyIndented} from "@voml/von-language";
+import {validate, type VonSchema} from "@voml/von-schema";
 
 const value = parse(`
   # Human-authored service settings
@@ -59,15 +60,17 @@ pnpm dev
 Build or test one package with filters:
 
 ```bash
-pnpm --filter @game-gpt/von build
-pnpm --filter @game-gpt/von-schema test
-pnpm --filter @game-gpt/von-homepage build
+pnpm --filter @voml/von build
+pnpm --filter @voml/von-language test
+pnpm --filter @voml/von-schema test
+pnpm --filter @voml/von-homepage build
 # same as root: pnpm homepage → dist/cdn
 ```
 
 ## Workspace principles
 
 - The core parser has no dependency on Vue, YAML, or the website.
+- `@voml/von` owns the value model only, while `@voml/von-language` owns lexing, parsing, and formatting and depends on `@voml/von`. The reverse dependency is forbidden.
 - Schema validation consumes ordinary `VonValue` data and does not alter the language grammar.
 - The website dogfoods the local workspace packages through `workspace:*`.
 - Floating-point values are outside VON V1 and are rejected rather than silently rounded or converted.

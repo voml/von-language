@@ -98,7 +98,7 @@ If the user's toolchain reports a parse error, use the message and location it g
 | Add comment                          | Change integer to string             |
 | Bump `version` with migration plan     | Remove `format` discriminator        |
 
-When the user's product defines a schema (`@game-gpt/von-schema` or custom rules), validate against it after editing.
+When the user's product defines a schema (`@voml/von-schema` or custom rules), validate against it after editing.
 
 ## Do not
 

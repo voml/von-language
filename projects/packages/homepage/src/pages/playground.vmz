@@ -58,7 +58,7 @@
 </template>
 
 <script client>
-import { parse, VonParseError } from "@game-gpt/von";
+import { parse, VonParseError } from "@voml/von-language";
 import {
   playgroundEyebrow,
   playgroundTitle,

@@ -8,5 +8,5 @@ exist yet. Syntax highlighting, diagnostics, formatting, completion, packaging, 
 implemented here today.
 
 The reusable building blocks for future editor work already live in
-[`@game-gpt/von`](../von/README.md), including the lexer, token model, parser, lexical helpers, and parse errors. Any
+[`@voml/von-language`](../von-language/README.md), including the lexer, token model, parser, lexical helpers, and parse errors. Any
 editor integration should build on that shared language surface rather than defining a separate VON dialect.

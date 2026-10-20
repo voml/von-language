@@ -1,4 +1,4 @@
-# `@game-gpt/von-skills`
+# `@voml/von-skills`
 
 Agent Skills for **people** who edit `.von` files — configuration, metadata, and other human-maintained documents. Install
 once with `npx skills add`; your AI assistant learns VON syntax, value-model limits, and stack-specific validation.
@@ -9,13 +9,13 @@ once with `npx skills add`; your AI assistant learns VON syntax, value-model lim
 
 ```bash
 # Current project
-npx skills add @game-gpt/von-skills --skill von-language -y
+npx skills add @voml/von-skills --skill von-language -y
 
 # Preview skills in the package
-npx skills add @game-gpt/von-skills --list
+npx skills add @voml/von-skills --list
 
 # All projects on this machine
-npx skills add @game-gpt/von-skills --skill von-language -y -g
+npx skills add @voml/von-skills --skill von-language -y -g
 ```
 
 Requires Node.js 18+ for the installer only. Works with agents that support [Agent Skills](https://agentskills.io/).
@@ -36,6 +36,6 @@ See [`skills/von-language/SKILL.md`](./skills/von-language/SKILL.md) and
 Source: [voml/von-language](https://github.com/voml/von-language) → `projects/packages/von-skills`
 
 ```bash
-pnpm --filter @game-gpt/von-skills typecheck
+pnpm --filter @voml/von-skills typecheck
 npx skills add ./projects/packages/von-skills --list
 ```

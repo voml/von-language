@@ -6,7 +6,7 @@
  * - No NPM_TOKEN; OIDC Trusted Publisher (permissions.id-token: write)
  * - Contract: file=publish-npm.yml env=NPM_PUBLISH repo=voml/von-language
  *
- * Prereq: @game-gpt/von built (dist/) before publish; CI workflow runs build.
+ * Prereq: `@voml/von` and `@voml/von-language` built (dist/) before publish; CI workflow runs build.
  */
 
 import { spawnSync } from 'node:child_process';
@@ -19,8 +19,12 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 
 /** @type {{ dir: string, publishName?: string, prebuild?: string }[]} */
 const JS_PACKAGES = [
-    { dir: 'projects/packages/von', prebuild: 'pnpm --filter @game-gpt/von build' },
-    { dir: 'projects/packages/von-schema', prebuild: 'pnpm --filter @game-gpt/von-schema build' },
+    { dir: 'projects/packages/von', prebuild: 'pnpm --filter @voml/von build' },
+    {
+        dir: 'projects/packages/von-language',
+        prebuild: 'pnpm --filter @voml/von build && pnpm --filter @voml/von-language build',
+    },
+    { dir: 'projects/packages/von-schema', prebuild: 'pnpm --filter @voml/von-schema build' },
     { dir: 'projects/packages/von-skills' },
 ];
 

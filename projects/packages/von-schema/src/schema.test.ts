@@ -1,4 +1,4 @@
-import { parse } from "@game-gpt/von";
+import { parse } from "@voml/von-language";
 import { describe, expect, it } from "vitest";
 import { validate, type VonSchema } from "./index.js";
 
@@ -19,7 +19,7 @@ const configSchema: VonSchema = {
   },
 };
 
-describe("@game-gpt/von-schema", () => {
+describe("@voml/von-schema", () => {
   it("accepts a valid config document", () => {
     const value = parse(`{
   format: "app.config",

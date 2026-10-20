@@ -1,6 +1,6 @@
 import { VonError } from "./error.js";
 import { isIdentifierContinue, isIdentifierStart } from "./lexical.js";
-import { isVonObject, type VonValue } from "./value.js";
+import { isVonObject, type VonValue } from "@voml/von";
 
 /** Serialize a value to compact, deterministic VON text. */
 export function stringify(value: VonValue): string {

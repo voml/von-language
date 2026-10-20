@@ -1,4 +1,5 @@
-import { stringifyIndented, type VonValue } from "@game-gpt/von";
+import type { VonValue } from "@voml/von";
+import { stringifyIndented } from "@voml/von-language";
 import { parse as parseYaml, stringify as stringifyYaml } from "yaml";
 
 export type ExternalFormat = "json" | "yaml";

@@ -59,7 +59,7 @@ bumping `version`.
 
 - Remove or rename fields
 - Change value types (integer ↔ string)
-- Tighten validation rules in `@game-gpt/von-schema` or custom checks
+- Tighten validation rules in `@voml/von-schema` or custom checks
 
 ## Common mistakes
 

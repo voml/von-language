@@ -1,5 +1,5 @@
 {
-  "name": "@game-gpt/von-homepage",
+  "name": "@voml/von-homepage",
   "version": "0.1.0",
   "private": true,
   "description": "VON homepage — VMZ + @vmz/ui + @vmz/ui-icons dogfood",
@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "vmz dev . --out-dir dist/cdn --target browser",
-    "prebuild": "pnpm --filter @game-gpt/von run build",
+    "prebuild": "pnpm --filter @voml/von run build && pnpm --filter @voml/von-language run build",
     "build": "vmz check . && vmz build . --release --profile static --out-dir dist/cdn --target browser",
     "build:cdn": "pnpm run build",
     "check": "vmz check .",
@@ -15,7 +15,8 @@
     "typecheck": "vmz check ."
   },
   "dependencies": {
-    "@game-gpt/von": "workspace:*",
+    "@voml/von": "workspace:*",
+    "@voml/von-language": "workspace:*",
     "@vmz/core": "0.1.12",
     "@vmz/ui": "0.1.12",
     "@vmz/ui-icons": "0.1.12",
