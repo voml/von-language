@@ -1,36 +1,164 @@
 {
-  "entries": [
-    {
-      "key": { "path": ["status", "info", "accent"] },
-      "value": "#0EA5E9"
-    },
-    {
-      "key": { "path": ["status", "info", "foreground"] },
-      "value": "#0369A1"
-    },
-    {
-      "key": { "path": ["status", "success", "accent"] },
-      "value": "#059669"
-    },
-    {
-      "key": { "path": ["status", "success", "foreground"] },
-      "value": "#047857"
-    },
-    {
-      "key": { "path": ["status", "warning", "accent"] },
-      "value": "#F59E0B"
-    },
-    {
-      "key": { "path": ["status", "warning", "foreground"] },
-      "value": "#B45309"
-    },
-    {
-      "key": { "path": ["status", "danger", "accent"] },
-      "value": "#DC2626"
-    },
-    {
-      "key": { "path": ["status", "danger", "foreground"] },
-      "value": "#B91C1C"
-    }
-  ]
+    "entries": [
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "info",
+                    "accent"
+                ]
+            },
+            "value": "#0EA5E9"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "info",
+                    "foreground"
+                ]
+            },
+            "value": "#0369A1"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "info",
+                    "background"
+                ]
+            },
+            "value": "#E6F4FF"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "info",
+                    "border"
+                ]
+            },
+            "value": "#91CAFF"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "success",
+                    "accent"
+                ]
+            },
+            "value": "#059669"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "success",
+                    "foreground"
+                ]
+            },
+            "value": "#047857"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "success",
+                    "background"
+                ]
+            },
+            "value": "#F6FFED"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "success",
+                    "border"
+                ]
+            },
+            "value": "#B7EB8F"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "warning",
+                    "accent"
+                ]
+            },
+            "value": "#F59E0B"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "warning",
+                    "foreground"
+                ]
+            },
+            "value": "#B45309"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "warning",
+                    "background"
+                ]
+            },
+            "value": "#FFFBE6"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "warning",
+                    "border"
+                ]
+            },
+            "value": "#FFE58F"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "danger",
+                    "accent"
+                ]
+            },
+            "value": "#DC2626"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "danger",
+                    "foreground"
+                ]
+            },
+            "value": "#B91C1C"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "danger",
+                    "background"
+                ]
+            },
+            "value": "#FFF1F0"
+        },
+        {
+            "key": {
+                "path": [
+                    "status",
+                    "danger",
+                    "border"
+                ]
+            },
+            "value": "#FFA39E"
+        }
+    ]
 }

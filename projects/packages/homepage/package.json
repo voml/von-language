@@ -15,14 +15,15 @@
     "typecheck": "vmz check ."
   },
   "dependencies": {
+    "@vmz/core": "0.3.12",
+    "@vmz/ui": "0.3.12",
+    "@vmz/ui-icons": "0.3.12",
     "@voml/von": "workspace:*",
     "@voml/von-language": "workspace:*",
-    "@vmz/core": "0.1.12",
-    "@vmz/ui": "0.1.12",
-    "@vmz/ui-icons": "0.1.12",
     "yaml": "^2.9.0"
   },
   "devDependencies": {
-    "@vmz/vmz": "0.1.12"
+    "@vmz/plugin": "0.3.12",
+    "@vmz/vmz": "0.3.12"
   }
 }

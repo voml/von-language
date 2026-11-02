@@ -2,38 +2,38 @@
   <footer class="site-footer">
     <div class="site-footer__inner">
       <div>
-        <p class="site-footer__brand">{brandShortLabel}</p>
-        <p class="site-footer__full">{brandFullLabel}</p>
-        <p class="site-footer__blurb">{footerBlurbLabel}</p>
+        <p class="site-footer__brand">{{ brandShortLabel }}</p>
+        <p class="site-footer__full">{{ brandFullLabel }}</p>
+        <p class="site-footer__blurb">{{ footerBlurbLabel }}</p>
       </div>
 
       <div class="site-footer__cols">
         <div>
-          <h2>{footerExploreLabel}</h2>
+          <h2>{{ footerExploreLabel }}</h2>
           <ul>
-            <li><Link href="/">{navHomeLabel}</Link></li>
-            <li><Link href="/playground">{navPlaygroundLabel}</Link></li>
+            <li><Link href="/">{{ navHomeLabel }}</Link></li>
+            <li><Link href="/playground">{{ navPlaygroundLabel }}</Link></li>
           </ul>
         </div>
         <div>
-          <h2>{footerPackagesLabel}</h2>
+          <h2>{{ footerPackagesLabel }}</h2>
           <ul>
             <li><code>@voml/von-language</code></li>
             <li><code>@voml/von-schema</code></li>
           </ul>
         </div>
         <div>
-          <h2>{footerConvertLabel}</h2>
+          <h2>{{ footerConvertLabel }}</h2>
           <ul>
-            <li>{footerJsonVonLabel}</li>
-            <li>{footerYamlVonLabel}</li>
+            <li>{{ footerJsonVonLabel }}</li>
+            <li>{{ footerYamlVonLabel }}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="site-footer__bar">
-      <p>© {yearLabel} {footerCopyrightLabel}</p>
-      <p class="site-footer__mono">{footerMonoLabel}</p>
+      <p>© {{ yearLabel }} {{ footerCopyrightLabel }}</p>
+      <p class="site-footer__mono">{{ footerMonoLabel }}</p>
     </div>
   </footer>
 </template>

@@ -1,40 +1,133 @@
 {
-  "entries": [
-    {
-      "key": { "path": ["action", "primary", "background"] },
-      "value": "#0EA5E9"
-    },
-    {
-      "key": { "path": ["action", "primary", "foreground"] },
-      "value": "#F0F9FF"
-    },
-    {
-      "key": { "path": ["action", "primary", "hover"] },
-      "value": "#0284C7"
-    },
-    {
-      "key": { "path": ["action", "primary", "active"] },
-      "value": "#0369A1"
-    },
-    {
-      "key": { "path": ["action", "secondary", "background"] },
-      "value": "rgba(255, 255, 255, 0.55)"
-    },
-    {
-      "key": { "path": ["action", "secondary", "foreground"] },
-      "value": "#0F172A"
-    },
-    {
-      "key": { "path": ["action", "secondary", "border"] },
-      "value": "rgba(2, 132, 199, 0.28)"
-    },
-    {
-      "key": { "path": ["action", "secondary", "hover"] },
-      "value": "rgba(255, 255, 255, 0.75)"
-    },
-    {
-      "key": { "path": ["focus", "ring"] },
-      "value": "color-mix(in srgb, #0EA5E9 35%, transparent)"
-    }
-  ]
+    "entries": [
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "primary",
+                    "background"
+                ]
+            },
+            "value": "#0EA5E9"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "primary",
+                    "foreground"
+                ]
+            },
+            "value": "#F0F9FF"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "primary",
+                    "hover"
+                ]
+            },
+            "value": "#0284C7"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "primary",
+                    "active"
+                ]
+            },
+            "value": "#0369A1"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "primary",
+                    "soft"
+                ]
+            },
+            "value": "#E6F4FF"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "secondary",
+                    "background"
+                ]
+            },
+            "value": "rgba(255, 255, 255, 0.55)"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "secondary",
+                    "foreground"
+                ]
+            },
+            "value": "#0F172A"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "secondary",
+                    "border"
+                ]
+            },
+            "value": "rgba(2, 132, 199, 0.28)"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "secondary",
+                    "hover"
+                ]
+            },
+            "value": "rgba(255, 255, 255, 0.75)"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "secondary",
+                    "active"
+                ]
+            },
+            "value": "#F0F1F3"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "link",
+                    "foreground"
+                ]
+            },
+            "value": "#0958D9"
+        },
+        {
+            "key": {
+                "path": [
+                    "action",
+                    "link",
+                    "hover"
+                ]
+            },
+            "value": "#1677FF"
+        },
+        {
+            "key": {
+                "path": [
+                    "focus",
+                    "ring"
+                ]
+            },
+            "value": "color-mix(in srgb, #0EA5E9 35%, transparent)"
+        }
+    ]
 }

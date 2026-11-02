@@ -35,8 +35,9 @@ export function toVonValue(input: unknown, path = "$"): VonValue {
     if (proto !== Object.prototype && proto !== null) {
       throw new Error(`${path}: unsupported object type`);
     }
-    const object: { [key: string]: VonValue } = {};
-    for (const [key, value] of Object.entries(input as Record<string, unknown>)) {
+    const object = {};
+    const record: Record<string, unknown> = input;
+    for (const [key, value] of Object.entries(record)) {
       object[key] = toVonValue(value, `${path}.${key}`);
     }
     return object;

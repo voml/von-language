@@ -1,21 +1,21 @@
 <template>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-brand" href="/" aria-label={homeAriaLabel}>
+      <a class="site-brand" href="/" :aria-label="homeAriaLabel">
         <Icon name="nav.home" size="sm" label="" />
-        <span class="site-brand__mark">{brandShortLabel}</span>
-        <span class="site-brand__tag">{brandFullLabel}</span>
+        <span class="site-brand__mark">{{ brandShortLabel }}</span>
+        <span class="site-brand__tag">{{ brandFullLabel }}</span>
       </a>
 
-      <nav class="site-nav" aria-label={navPrimaryLabel}>
-        <a href="/" aria-current={homeCurrent}>{navHomeLabel}</a>
-        <a href="/playground" aria-current={playgroundCurrent}>{navPlaygroundLabel}</a>
+      <nav class="site-nav" :aria-label="navPrimaryLabel">
+        <a href="/" :aria-current="homeCurrent">{{ navHomeLabel }}</a>
+        <a href="/playground" :aria-current="playgroundCurrent">{{ navPlaygroundLabel }}</a>
       </nav>
 
       <div class="site-header__aside">
         <LocaleSwitch />
         <code class="site-header__pkg">@voml/von-language</code>
-        <Button type="button" onClick={() => this.goPlayground()}>{navConvertLabel}</Button>
+        <Button type="button" @click="() => this.goPlayground()">{{ navConvertLabel }}</Button>
       </div>
     </div>
   </header>

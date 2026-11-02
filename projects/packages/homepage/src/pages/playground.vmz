@@ -4,51 +4,51 @@
   <div class="playground">
     <header class="playground__head">
       <div>
-        <p class="playground__eyebrow">{playgroundEyebrowLabel}</p>
-        <h1>{playgroundTitleLabel}</h1>
-        <p class="playground__lede">{playgroundLedeLabel}</p>
+        <p class="playground__eyebrow">{{ playgroundEyebrowLabel }}</p>
+        <h1>{{ playgroundTitleLabel }}</h1>
+        <p class="playground__lede">{{ playgroundLedeLabel }}</p>
       </div>
-      <Button type="button" variant="secondary" onClick={() => this.resetSample()}>
-        {playgroundResetLabel}
+      <Button type="button" variant="secondary" @click="() => this.resetSample()">
+        {{ playgroundResetLabel }}
       </Button>
     </header>
 
     <Tabs
-      label={playgroundTabsLabel}
-      selected={tab}
+      :label="playgroundTabsLabel"
+      :selected="tab"
       panelId="von-playground-panel"
-      items={tabItems}
-      onSelect={(id) => this.onTabSelect(id)}
+      :items="tabItems"
+      @select="(id) => this.onTabSelect(id)"
     >
       <div class="playground__toolbar">
         <Select
-          label={formatLabel}
-          value={format}
-          options={formatOptions}
+          :label="formatLabel"
+          :value="format"
+          :options="formatOptions"
           controlId="von-format-select"
-          onChange={(e) => this.onFormatChange(e)}
+          @change="(e) => this.onFormatChange(e)"
         />
-        <p class="playground__hint">{playgroundHintLabel}</p>
+        <p class="playground__hint">{{ playgroundHintLabel }}</p>
       </div>
 
       <div class="playground__grid">
         <div>
-          <span class="playground__panel-label">{inputLabel}</span>
+          <span class="playground__panel-label">{{ inputLabel }}</span>
           <TextArea
-            rows={18}
-            value={input}
-            onInput={(e) => this.onInput(e)}
+            :rows="18"
+            :value="input"
+            @input="(e) => this.onInput(e)"
           />
         </div>
 
         <div>
           <div class="playground__output-head">
-            <span class="playground__panel-label">{outputLabel}</span>
-            <strong if={conversionOk} class="playground__status-ok">{playgroundConvertedLabel}</strong>
-            <strong if={!conversionOk} class="playground__status-bad">{playgroundFailedLabel}</strong>
+            <span class="playground__panel-label">{{ outputLabel }}</span>
+            <strong v-if="conversionOk" class="playground__status-ok">{{ playgroundConvertedLabel }}</strong>
+            <strong v-if="!conversionOk" class="playground__status-bad">{{ playgroundFailedLabel }}</strong>
           </div>
-          <Alert if={!conversionOk} tone="danger" title={playgroundFailedLabel} description={conversionError} />
-          <CodeBlock if={conversionOk} code={outputText} caption={outputLabel} copyLabel="Copy" />
+          <Alert v-if="!conversionOk" tone="danger" :title="playgroundFailedLabel" :description="conversionError" />
+          <CodeBlock v-if="conversionOk" :code="outputText" :caption="outputLabel" copyLabel="Copy" />
         </div>
       </div>
     </Tabs>
@@ -86,12 +86,12 @@ export default class PlaygroundPage {
   localeId = "en-us";
   tab = "to-von";
   format: ExternalFormat = "json";
-  input = SAMPLE_JSON;
+  input = "";
   outputText = "";
   conversionError = "";
   conversionOk = true;
   tabItems = [];
-  formatOptions = EXTERNAL_FORMATS.map((item) => ({ value: item.id, label: item.label }));
+  formatOptions = [];
   formatLabel = "";
   inputLabel = "";
   outputLabel = "";
@@ -105,12 +105,12 @@ export default class PlaygroundPage {
   playgroundFailedLabel = "";
   _unwatchLocale = null;
 
-  samples = {
-    json: SAMPLE_JSON,
-    yaml: SAMPLE_YAML,
-  };
+  samples = { json: "", yaml: "" };
 
   onMount() {
+    this.input = SAMPLE_JSON;
+    this.samples = { json: SAMPLE_JSON, yaml: SAMPLE_YAML };
+    this.formatOptions = EXTERNAL_FORMATS.map((item) => ({ value: item.id, label: item.label }));
     this.applyLocaleCopy();
     this._unwatchLocale = watchDocumentLocale((id) => this.applyLocaleCopy(id));
     this.runConversion();

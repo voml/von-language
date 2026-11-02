@@ -4,13 +4,13 @@
   <div class="home">
     <section class="home__hero">
       <div>
-        <p class="home__eyebrow">{homeEyebrowLabel}</p>
-        <h1 class="home__brand">{brandShortLabel}</h1>
-        <p class="home__full-name">{brandFullLabel}</p>
-        <p class="home__lede">{homeLedeLabel}</p>
+        <p class="home__eyebrow">{{ homeEyebrowLabel }}</p>
+        <h1 class="home__brand">{{ brandShortLabel }}</h1>
+        <p class="home__full-name">{{ brandFullLabel }}</p>
+        <p class="home__lede">{{ homeLedeLabel }}</p>
         <div class="home__actions">
-          <Button type="button" onClick={() => this.goPlayground()}>{homeOpenPlaygroundLabel}</Button>
-          <Button type="button" variant="secondary" onClick={() => this.goPackages()}>{homeViewPackagesLabel}</Button>
+          <Button type="button" @click="() => this.goPlayground()">{{ homeOpenPlaygroundLabel }}</Button>
+          <Button type="button" variant="secondary" @click="() => this.goPackages()">{{ homeViewPackagesLabel }}</Button>
         </div>
       </div>
 
@@ -19,57 +19,57 @@
         <div class="home__shard home__shard-a"></div>
         <div class="home__shard home__shard-b"></div>
         <div class="home__code-wrap">
-          <CodeBlock code={sampleVon} caption="VON" copyLabel="Copy" />
+          <CodeBlock :code="sampleVon" caption="VON" copyLabel="Copy" />
         </div>
       </div>
     </section>
 
     <section class="home__section">
       <div class="home__section-head">
-        <h2>{homeWhyTitleLabel}</h2>
-        <p>{homeWhyLedeLabel}</p>
+        <h2>{{ homeWhyTitleLabel }}</h2>
+        <p>{{ homeWhyLedeLabel }}</p>
       </div>
       <div class="home__feature-grid">
         <article>
-          <Badge tone="brand">{homeFeaturesCommentsTitleLabel}</Badge>
-          <h3>{homeFeaturesCommentsTitleLabel}</h3>
-          <p>{homeFeaturesCommentsBodyLabel}</p>
+          <Badge tone="brand">{{ homeFeaturesCommentsTitleLabel }}</Badge>
+          <h3>{{ homeFeaturesCommentsTitleLabel }}</h3>
+          <p>{{ homeFeaturesCommentsBodyLabel }}</p>
         </article>
         <article>
-          <Badge tone="info">{homeFeaturesBareTitleLabel}</Badge>
-          <h3>{homeFeaturesBareTitleLabel}</h3>
-          <p>{homeFeaturesBareBodyLabel}</p>
+          <Badge tone="info">{{ homeFeaturesBareTitleLabel }}</Badge>
+          <h3>{{ homeFeaturesBareTitleLabel }}</h3>
+          <p>{{ homeFeaturesBareBodyLabel }}</p>
         </article>
         <article>
-          <Badge tone="warning">{homeFeaturesFloatsTitleLabel}</Badge>
-          <h3>{homeFeaturesFloatsTitleLabel}</h3>
-          <p>{homeFeaturesFloatsBodyLabel}</p>
+          <Badge tone="warning">{{ homeFeaturesFloatsTitleLabel }}</Badge>
+          <h3>{{ homeFeaturesFloatsTitleLabel }}</h3>
+          <p>{{ homeFeaturesFloatsBodyLabel }}</p>
         </article>
         <article>
-          <Badge tone="success">{homeFeaturesSchemaTitleLabel}</Badge>
-          <h3>{homeFeaturesSchemaTitleLabel}</h3>
-          <p>{homeFeaturesSchemaBodyLabel}</p>
+          <Badge tone="success">{{ homeFeaturesSchemaTitleLabel }}</Badge>
+          <h3>{{ homeFeaturesSchemaTitleLabel }}</h3>
+          <p>{{ homeFeaturesSchemaBodyLabel }}</p>
         </article>
       </div>
     </section>
 
     <section id="packages" class="home__section">
       <div class="home__section-head">
-        <h2>{homePackagesTitleLabel}</h2>
-        <p>{homePackagesLedeLabel}</p>
+        <h2>{{ homePackagesTitleLabel }}</h2>
+        <p>{{ homePackagesLedeLabel }}</p>
       </div>
       <div class="home__pkg-grid">
         <article>
           <code>@voml/von-language</code>
-          <p>{homePkgVonLabel}</p>
+          <p>{{ homePkgVonLabel }}</p>
         </article>
         <article>
           <code>@voml/von-schema</code>
-          <p>{homePkgSchemaLabel}</p>
+          <p>{{ homePkgSchemaLabel }}</p>
         </article>
       </div>
       <div class="home__actions" style="margin-top: 1.5rem">
-        <Button type="button" onClick={() => this.goPlayground()}>{homeTryPlaygroundLabel}</Button>
+        <Button type="button" @click="() => this.goPlayground()">{{ homeTryPlaygroundLabel }}</Button>
       </div>
     </section>
   </div>
@@ -106,7 +106,7 @@ import { readLocaleId, withLocaleHint, watchDocumentLocale } from "../lib/locale
 
 export default class IndexPage {
   localeId = "en-us";
-  sampleVon = SAMPLE_VON;
+  sampleVon = "";
   brandShortLabel = "";
   brandFullLabel = "";
   homeEyebrowLabel = "";
@@ -131,6 +131,7 @@ export default class IndexPage {
   _unwatchLocale = null;
 
   onMount() {
+    this.sampleVon = SAMPLE_VON;
     this.applyLocaleCopy();
     this._unwatchLocale = watchDocumentLocale((id) => this.applyLocaleCopy(id));
   }

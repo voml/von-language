@@ -1,8 +1,10 @@
-import { defineConfig } from "@vmz/vmz";
+import { defineConfig } from "@vmz/plugin";
 
 export default defineConfig({
   delivery: {
     default: "static",
-    profiles: {},
+    profiles: {
+      static: { host: "browser", assembly: "web-static" },
+    },
   },
 });

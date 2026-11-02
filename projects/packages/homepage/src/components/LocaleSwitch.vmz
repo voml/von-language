@@ -1,11 +1,11 @@
 <template>
   <div class="locale-switch">
     <Select
-      label={localeLabel}
-      value={localeId}
-      options={localeOptions}
+      :label="localeLabel"
+      :value="localeId"
+      :options="localeOptions"
       controlId="von-locale-select"
-      onChange={onLocaleChange}
+      @change="onLocaleChange"
     />
   </div>
 </template>

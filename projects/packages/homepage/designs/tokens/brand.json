@@ -1,49 +1,53 @@
 {
-  "brand": {
-    "primary": "#0EA5E9",
-    "energy": "#F59E0B"
-  },
-  "scale": {
-    "50": "#F0F9FF",
-    "100": "#E0F2FE",
-    "200": "#BAE6FD",
-    "300": "#7DD3FC",
-    "400": "#38BDF8",
-    "500": "#0EA5E9",
-    "600": "#0284C7",
-    "700": "#0369A1",
-    "800": "#075985",
-    "900": "#0C4A6E",
-    "950": "#082F49"
-  },
-  "surface": {
-    "paper": "#FFFFFF",
-    "mist": "#F5FAFD",
-    "page": "#F0F9FF",
-    "ink": "#0F172A",
-    "graphite": "#475569"
-  },
-  "text": {
-    "ink": "#0F172A",
-    "steel": "#475569",
-    "on-brand": "#F0F9FF",
-    "on-ink": "#F8FAFC"
-  },
-  "line": {
-    "default": "rgba(15, 23, 42, 0.16)",
-    "subtle": "rgba(15, 23, 42, 0.08)",
-    "strong": "#0F172A"
-  },
-  "status": {
-    "success": "#059669",
-    "warning": "#D97706",
-    "error": "#DC2626",
-    "analysis": "#0369A1",
-    "runtime": "#475569"
-  },
-  "font": {
-    "sans": "\"Sora\", \"Avenir Next\", \"Segoe UI\", sans-serif",
-    "mono": "\"IBM Plex Mono\", \"Cascadia Mono\", Consolas, monospace",
-    "display": "\"Fraunces\", \"Iowan Old Style\", Georgia, serif"
-  }
+    "brand": {
+        "primary": "#0EA5E9",
+        "energy": "#F59E0B"
+    },
+    "scale": {
+        "50": "#F0F9FF",
+        "100": "#E0F2FE",
+        "200": "#BAE6FD",
+        "300": "#7DD3FC",
+        "400": "#38BDF8",
+        "500": "#0EA5E9",
+        "600": "#0284C7",
+        "700": "#0369A1",
+        "800": "#075985",
+        "900": "#0C4A6E",
+        "950": "#082F49"
+    },
+    "surface": {
+        "paper": "#FFFFFF",
+        "mist": "#F5FAFD",
+        "page": "#F0F9FF",
+        "ink": "#0F172A",
+        "graphite": "#475569",
+        "fill": "#FAFBFC",
+        "code": "#0F1115"
+    },
+    "text": {
+        "ink": "#0F172A",
+        "steel": "#475569",
+        "on-brand": "#F0F9FF",
+        "on-ink": "#F8FAFC",
+        "tertiary": "#646A73",
+        "muted": "#6B7178"
+    },
+    "line": {
+        "default": "rgba(15, 23, 42, 0.16)",
+        "subtle": "rgba(15, 23, 42, 0.08)",
+        "strong": "#0F172A"
+    },
+    "status": {
+        "success": "#059669",
+        "warning": "#D97706",
+        "error": "#DC2626",
+        "analysis": "#0369A1",
+        "runtime": "#475569"
+    },
+    "font": {
+        "sans": "\"Sora\", \"Avenir Next\", \"Segoe UI\", sans-serif",
+        "mono": "\"IBM Plex Mono\", \"Cascadia Mono\", Consolas, monospace",
+        "display": "\"Fraunces\", \"Iowan Old Style\", Georgia, serif"
+    }
 }
