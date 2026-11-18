@@ -13,8 +13,6 @@
         "build": "pnpm -r --filter @voml/von --filter @voml/von-language --filter @voml/von-schema run build",
         "test": "pnpm build && pnpm -r --filter @voml/von --filter @voml/von-language --filter @voml/von-schema run test",
         "typecheck": "pnpm -r --filter @voml/von --filter @voml/von-language --filter @voml/von-schema --filter @voml/von-skills --filter @voml/von-homepage run typecheck",
-        "test:rs": "cargo test --workspace --all-features",
-        "check:rs": "cargo check --workspace --all-features",
         "placeholder": "nifty publish --placeholder --dry-run",
         "placeholder:publish": "nifty publish --placeholder",
         "placeholder:trust": "nifty trust"

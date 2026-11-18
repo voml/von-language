@@ -104,15 +104,15 @@ Validation is **application-defined** — VON itself does not ship one global sc
 
 ### Rust
 
-Add to `Cargo.toml` (see [voml/von-language](https://github.com/voml/von-language) for current crate version):
+The Rust implementation is owned by the Boost `schema.input.von` tree ([oovm/boost.rs](https://github.com/oovm/boost.rs)). Pin it in `Cargo.toml`:
 
 ```toml
 [dependencies]
-von = { version = "0.1", features = ["serde"] }
+schema-input-von = { git = "https://github.com/oovm/boost.rs.git", rev = "<pinned revision>", features = ["serde"] }
 ```
 
 ```rust
-use von::{VonParser, VonValue};
+use schema_input_von::{VonParser, VonValue};
 
 let value = VonParser::parse(r#"{ name: "atlas", replicas: 3 }"#)?;
 assert!(matches!(value, VonValue::Object(_)));

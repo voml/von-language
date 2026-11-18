@@ -33,8 +33,8 @@ the syntax, value model, parsing, and deterministic text representation.
   arrays, and string-keyed objects.
 - **Stable in source control.** Canonical writers sort object keys and use a consistent two-space layout, making
   generated changes easier to review.
-- **Portable across runtimes.** TypeScript and Rust implementations share the same language contract instead of growing
-  host-specific dialects.
+- **Portable across runtimes.** The TypeScript packages and the Rust schema-input crates share one language contract
+  instead of growing host-specific dialects.
 - **Safe to embed.** No executable syntax means consumers remain in control of validation, versioning, migration, and
   runtime behavior.
 
@@ -74,11 +74,11 @@ commands.
 
 ## Start in Rust
 
-The Rust workspace separates the public facade, parser, and value model. The
-`von` crate parses directly into `VonValue`; enabling `serde` adds typed deserialization and canonical serialization.
+The Rust value model, parser, lossless CST, and optional Serde bridge live in the Boost `schema.input.von` capability
+tree, which owns the Rust side of the VON contract:
 
 ```rust
-use von::{VonParser, VonValue};
+use schema_input_von::{VonParser, VonValue};
 
 let value = VonParser::parse(r#"{ name: "atlas", replicas: 3 }"#) ?;
 assert!(matches!(value, VonValue::Object(_)));
@@ -91,10 +91,8 @@ struct Service {
     replicas: i64,
 }
 
-let service: Service = von::from_str(r#"{ name: "atlas", replicas: 3 }"#) ?;
+let service: Service = schema_input_von::from_str(r#"{ name: "atlas", replicas: 3 }"#) ?;
 ```
-
-See [`projects/crates`](./projects/crates/README.md) for feature flags, crate boundaries, and development commands.
 
 ## The V1 language
 
@@ -127,11 +125,10 @@ handwritten input.
 von-language/
 ├── License.md                MPL-2.0
 ├── pnpm-workspace.yaml       Single root pnpm workspace
-├── .github/workflows/        TypeScript and Rust verification
+├── .github/workflows/        TypeScript verification
 ├── scripts/                  Repo automation (`pnpm fmt`)
 └── projects/
     ├── packages/             TS parser, schema validator, skills, and playground
-    ├── crates/               Rust value model, parser, CST, and Serde bridge
     ├── von.cs/               C# host (placeholder)
     └── von.kt/               Kotlin host (placeholder)
 ```
@@ -139,7 +136,8 @@ von-language/
 Published npm packages include `@voml/von`, `@voml/von-language`, `@voml/von-schema`, and `@voml/von-skills` (Agent Skills for `.von`
 authoring via `npx skills add`).
 
-The repository currently ships working TypeScript and Rust implementations. Editor tooling is represented by a private
+The repository currently ships the working TypeScript implementation. The Rust value model, parser, CST, and Serde
+bridge are owned by the Boost `schema.input.von` capability tree. Editor tooling is represented by a private
 placeholder package and is not yet presented as a finished extension.
 
 ## Develop
@@ -154,25 +152,13 @@ pnpm build
 pnpm dev
 ```
 
-Rust:
-
-```bash
-cargo fmt --all -- --check
-cargo check --workspace --all-features
-cargo clippy --workspace --all-features --all-targets -- -D warnings
-cargo test --workspace --all-features
-```
-
-Or from the repo root: `pnpm check:rs` / `pnpm test:rs`.
-
 ## Project status
 
-VON has a deliberately narrow V1 language contract and tested TypeScript and Rust implementations. The parser, canonical
-writer, TypeScript schema validator, Rust lossless CST surface, and optional Rust Serde bridge are present today.
-Broader editor integrations and additional language implementations remain future work.
+VON has a deliberately narrow V1 language contract and tested implementations. The parser, canonical writer, and
+TypeScript schema validator are present in this repository, and the Rust lossless CST surface with its optional Serde
+bridge is maintained in the Boost `schema.input.von` tree. Broader editor integrations and additional language
+implementations remain future work.
 
 ## License and origin
 
-This repository is licensed under the [Mozilla Public License 2.0](./License.md). The Rust parser, CST, and Serde core
-include adapted work whose history and notices are recorded in [
-`projects/crates/NOTICE.md`](./projects/crates/NOTICE.md).
+This repository is licensed under the [Mozilla Public License 2.0](./License.md).
