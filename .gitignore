@@ -24,3 +24,6 @@ Thumbs.db
 scripts/.placeholder-npm-cache.json
 .cache/npm-placeholder.json
 .env.placeholder.local
+
+# npm secrets (nifty)
+.secrets/
